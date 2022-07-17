@@ -1,10 +1,26 @@
+import {Routes, Route} from "react-router-dom"
+
+import {MainLayout} from "./layouts"
+import {NotFoundPage,UsersPage, PostsPage,SingleUserPage} from "./pages"
+
+
+
 
 
 function App() {
   return (
-    <div>
+    <Routes>
+      <Route path={'/'} element={<MainLayout/>}>
+        <Route path={'users'} element={<UsersPage/>}>
+          <Route path={':id'} element={<SingleUserPage/>}/>
+        </Route>
+        <Route path={'posts'} element={<PostsPage/>}/>
+        </Route>
 
-    </div>
+        <Route path={'*'} element={<NotFoundPage/>}/>
+
+
+    </Routes>
   );
 }
 
